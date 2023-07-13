@@ -10,11 +10,11 @@ class SuratKeluar extends Model
     use HasFactory;
 
     protected $table = 'surat_keluar';
-    protected $fillable = ['judul_surat__keluar_id', 'perihal_sk', 'tanggal_surat_keluar', 'file_surat_keluar', 'jenis_surat_keluar'];
+    protected $fillable = ['no_agendask', 'no_suratsk', 'pengirim_sk', 'perihal_sk', 'tgl_sk', 'file_surat_keluar', 'jenis_sk'];
     
     public function surat_keluar()
     {
-        return $this->belongsTo(SuratSurvei::class, 'judul_surat_keluar_id');
+        return $this->belongsTo(SuratKeluar::class, 'no_agendask');
     }
 
     

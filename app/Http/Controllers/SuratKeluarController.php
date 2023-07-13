@@ -84,11 +84,37 @@ class SuratKeluarController extends Controller
      public function store(Request $request)
      {
          $this->validate($request, [
-             'judul_surat' => 'required|string|max:255'
+            'no_agendask' => 'required|string|max:255',
+            'no_suratsk' => 'required|string|max:255',
+            'pengirimsk' => 'required|string|max:255',
+            'perihal_sk' => 'required|string|max:255',
+            'tgl_sk' => 'required|string|max:255',
+            'file_surat_keluar'=>'required|string|max:255',
+            'jenis_sk' => 'required|string|max:255'
+
          ]);
+         if($request->file('file_surat_keluar') == '') {
+            $file_surat_keluar = NULL;
+        } else {
+            $file = $request->file('file_surat_keluar');
+            $dt = Carbon::now();
+            $acak  = $file->getClientOriginalExtension();
+            $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
+            $request->file('file_surat_keluar')->move("document/surat", $fileName);
+            $file_surat_keluar = $fileName;
+        }
+
  
-         SuratSurvei::create([
-                 'judul_surat' => $request->get('judul_surat'),
+         SuratKeluar::create([
+                 'surat_keluar' => $request->get('surat_keluar'),
+                 'no_agendask' => $request->get('no_agendask'),
+                 'no_suratsk' => $request->get('no_suratsk'),
+                 'pengirimsk' => $request->get('pengirimsk'),
+                 'perihal_sk' => $request->get('perihal_sk'),
+                 'tgl_sk' => $request->get('tgl_sk'),
+                 'file_surat_keluar' => $file_surat_keluar,
+                 'jenis_sk' => $request->get('jenis_sk'),
+
              ]);
  
          alert()->success('Berhasil.','Data telah ditambahkan!');
@@ -110,7 +136,7 @@ class SuratKeluarController extends Controller
              return redirect()->to('/');
      }
  
-         $surat_survei = SuratSurvei::findOrFail($id);
+         $surat_keluar = SuratKeluar::findOrFail($id);
  
          return view('surat_keluar.show', compact('surat_keluar'));
      }
@@ -142,7 +168,7 @@ class SuratKeluarController extends Controller
      public function update(Request $request, $id)
      {
          SuratKeluar::find($id)->update([
-             'judul_surat' => $request->get('judul_surat')
+             'surat_keluar' => $request->get('surat_keluar')
          ]);
  
          alert()->success('Berhasil.','Data telah diubah!');

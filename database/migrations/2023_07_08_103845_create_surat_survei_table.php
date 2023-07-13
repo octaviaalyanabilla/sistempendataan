@@ -14,13 +14,15 @@ class CreateSuratSurveiTable extends Migration
     public function up()
     {
         Schema::create('surat_survei', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('judul_surat_id');
+            $table->increments('id');
+            $table->integer('no_agenda');
+            $table->integer('no_surat');
+            $table->string('pengirim');
             $table->string('perihal')->nullable();
-            $table->string('tanggal_surat')->nullable();
+            $table->date('tgl_surat_asal')->nullable();
+            $table->date('tgl_sm')->nullable();
             $table->string('file_surat')->nullable();
-            $table->enum('jenis_surat', ['penting'], ['biasa'])->nullable();
-            $table->foreign('judul_surat_id')->references('id')->on('surat_survei')->onDelete('cascade');
+            $table->enum('jenis_surat', ['penting', 'biasa'])->nullable();
             $table->timestamps();
         });
     }

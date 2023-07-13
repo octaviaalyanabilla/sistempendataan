@@ -19,54 +19,76 @@ $(document).ready(function() {
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">Add New Surat Masuk</h4>
+                            <h4 class="card-title">Add New Surat Keluar</h4>
 
-                            <div class="form-group{{ $errors->has('judul_surat') ? ' has-error' : '' }}">
-                                <label for="judul_surat" class="col-md-4 control-label">Judul</label>
+                            <div class="form-group{{ $errors->has('no_agendask') ? ' has-error' : '' }}">
+                                <label for="no_agendask" class="col-md-4 control-label">Nomor Agenda</label>
                                 <div class="col-md-6">
-                                    <input id="judul_surat" type="text" class="form-control" name="judul_surat" placeholder="Judul" required>
-                                    @if ($errors->has('judul_surat'))
+                                    <input id="no_agendask" type="text" class="form-control" name="no_agendask" placeholder="no_agendask" required>
+                                    @if ($errors->has('no_agendask'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('judul_surat') }}</strong>
+                                        <strong>{{ $errors->first('no_agendask') }}</strong>
                                     </span>
                                     @endif
                                 </div>
                             </div>
-                            <div class="form-group{{ $errors->has('perihal') ? ' has-error' : '' }}">
-                                <label for="perihal" class="col-md-4 control-label">Perihal</label>
+                            <div class="form-group{{ $errors->has('no_suratsk') ? ' has-error' : '' }}">
+                                <label for="no_suratsk" class="col-md-4 control-label">Nomor Surat</label>
                                 <div class="col-md-6">
-                                    <input id="perihal" type="text" class="form-control" name="perihal" placeholder="Perihal" required>
-                                    @if ($errors->has('perihal'))
+                                    <input id="no_suratsk" type="text" class="form-control" name="no_suratsk" placeholder="no_suratsk" required>
+                                    @if ($errors->has('no_suratsk'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('perihal') }}</strong>
+                                        <strong>{{ $errors->first('no_suratsk') }}</strong>
                                     </span>
                                     @endif
                                 </div>
                             </div>
-                            <div class="form-group{{ $errors->has('tanggal_surat') ? ' has-error' : '' }}">
-                                <label for="tanggal_surat" class="col-md-4 control-label">Tanggal Surat</label>
+                            <div class="form-group{{ $errors->has('pengirimsk') ? ' has-error' : '' }}">
+                                <label for="pengirimsk" class="col-md-4 control-label">Pengirim</label>
                                 <div class="col-md-6">
-                                    <input id="tanggal_surat" type="text" class="form-control" name="tanggal_surat" placeholder="Tanggal Surat" required>
-                                    @if ($errors->has('tanggal_surat'))
+                                    <input id="pengirimsk" type="text" class="form-control" name="pengirimsk" placeholder="pengirimsk" required>
+                                    @if ($errors->has('pengirimsk'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('tanggal_surat') }}</strong>
+                                        <strong>{{ $errors->first('pengirimsk') }}</strong>
                                     </span>
                                     @endif
                                 </div>
                             </div>
-                            <div class="form-group{{ $errors->has('file_surat') ? ' has-error' : '' }}">
-                                <label for="file_surat" class="col-md-4 control-label">File Surat</label>
+                            <div class="form-group{{ $errors->has('perihalsk') ? ' has-error' : '' }}">
+                                <label for="perihalsk" class="col-md-4 control-label">Perihal</label>
                                 <div class="col-md-6">
-                                    <input type="file" class="uploads form-control" style="margin-top: 20px;" name="docpdf" placeholder="File Surat">
+                                    <input id="perihalsk" type="text" class="form-control" name="perihalsk" placeholder="perihalsk" required>
+                                    @if ($errors->has('perihalsk'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('perihalsk') }}</strong>
+                                    </span>
+                                    @endif
                                 </div>
                             </div>
-                            <div class="form-group{{ $errors->has('jenis_surat') ? ' has-error' : '' }}">
-                                <label for="jenis_surat" class="col-md-4 control-label">Jenis Surat</label>
+                            <div class="form-group{{ $errors->has('tgl_sk') ? ' has-error' : '' }}">
+                                <label for="tgl_sk" class="col-md-4 control-label">Tanggal Surat</label>
                                 <div class="col-md-6">
-                                <select class="form-control" name="jenis_surat" required="">
+                                    <input id="tgl_sk" type="text" class="form-control" name="tgl_sk" placeholder="tgl_sk" required>
+                                    @if ($errors->has('tgl_sk'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('tgl_sk') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="form-group{{ $errors->has('file_surat_keluar') ? ' has-error' : '' }}">
+                                <label for="file_surat_keluar" class="col-md-4 control-label">File Surat</label>
+                                <div class="col-md-6">
+                                    <input type="file" class="uploads form-control" style="margin-top: 20px;" name="file_surat_keluar" placeholder="file_surat_keluar">
+                                </div>
+                            </div>
+                            <div class="form-group{{ $errors->has('jenis_sk') ? ' has-error' : '' }}">
+                                <label for="jenis_sk" class="col-md-4 control-label">Jenis Surat</label>
+                                <div class="col-md-6">
+                                <select class="form-control" name="jenis_sk" required="">
                                         <option value="">-- Jenis Surat --</option>
-                                        <option value="online">Biasa</option>
-                                        <option value="offline">Penting</option>
+                                        <option value="biasa">Biasa</option>
+                                        <option value="penting">Penting</option>
                                     </select>
                                 </div>
                             </div>

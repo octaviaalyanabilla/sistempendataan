@@ -43,14 +43,20 @@
         <div class="card">
 
             <div class="card-body">
-                <h4 class="card-title pull-left">Surat keluar</h4>
+                <h4 class="card-title pull-left">Surat Keluar</h4>
                 {{-- <a href="{{url('format_data')}}" class="btn btn-xs btn-info pull-right">Format data</a> --}}
                 <div class="table-responsive">
                     <table class="table table-striped" id="table">
                         <thead>
                             <tr>
                                 <th>
-                                    Judul
+                                    Nomor Agenda
+                                </th>
+                                <th>
+                                    Nomor Surat
+                                </th>
+                                <th>
+                                    Pengirim 
                                 </th>
                                 <th>
                                     Perihal
@@ -59,7 +65,7 @@
                                     Tanggal Surat
                                 </th>
                                 <th>
-                                    History
+                                    Status
                                 </th>
                                 <th>
                                     Action
@@ -70,15 +76,21 @@
                             @foreach($surat_keluar as $surat_keluars)
                             <tr>
                                 <td class="py-1">
-                                    <a href="{{route('surat_keluar.show', $surat_keluar->id)}}">
-                                        {{$surat_keluars->judul_surat}}
+                                    <a href="{{route('surat_keluar.show', $surat_keluars->id)}}">
+                                        {{$surat_keluars->no_agendask}}
                                     </a>
                                 </td>
                                 <td>
-                                    {{$surat_keluars->jumlah_data}}
+                                    {{$surat_keluars->no_suratsk}}
                                 </td>
                                 <td>
-                                    {{$surat_keluars->tahun_data}}
+                                    {{$surat_keluars->pengirim}}
+                                </td>
+                                <td>
+                                    {{$surat_keluars->perihal}}
+                                </td>
+                                <td>
+                                    {{$surat_keluars->tgl_sk}}
                                 </td>
                                 <td>
                                     <div class="btn-group dropdown">
@@ -88,8 +100,8 @@
                                         </button>
                                         <div class="dropdown-menu" x-placement="bottom-start"
                                             style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 30px, 0px);">
-                                            <a class="dropdown-item" href="{{route('surat_keluar.edit', $surat_keluar->id)}}"> Edit </a>
-                                            <form action="{{ route('surat_keluar.destroy', $surat_keluar->id) }}" class="pull-left"
+                                            <a class="dropdown-item" href="{{route('surat_keluar.edit', $surat_keluars->id)}}"> Edit </a>
+                                            <form action="{{ route('surat_keluar.destroy', $surat_keluars->id) }}" class="pull-left"
                                                 method="post">
                                                 {{ csrf_field() }}
                                                 {{ method_field('delete') }}

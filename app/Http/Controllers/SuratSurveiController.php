@@ -58,17 +58,6 @@ class SuratSurveiController extends Controller
          $this->validate($request, [
              'importData' => 'required'
          ]);
-        
-         if($request->file('docpdf') == '') {
-            $docpdf = NULL;
-        } else {
-            $file = $request->file('docpdf');
-            $dt = Carbon::now();
-            $acak  = $file->getClientOriginalExtension();
-            $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
-            $request->file('docpdf')->move("document/surat", $fileName);
-            $docpdf = $fileName;
-        }
                    
          
          alert()->success('Berhasil.','Data telah diimport!');
@@ -83,17 +72,43 @@ class SuratSurveiController extends Controller
       */
      public function store(Request $request)
      {
-         $this->validate($request, [
-             'judul_surat' => 'required|string|max:255'
-         ]);
- 
+        $this->validate($request, [
+            'no_agenda' => 'required',
+            'no_surat' => 'required',
+            'pengirim' => 'required|string|max:255',
+            'perihal' => 'required|string|max:255',
+            'tgl_surat_asal' => 'required|string|max:255',
+            'tgl_surat' => 'required|string|max:25',
+            'jenis_surat' => 'required'
+        ]);
+        if($request->file('file_surat') == '') {
+            $file_surat = NULL;
+        } else {
+            $file = $request->file('file_surat');
+            $dt = Carbon::now();
+            $acak  = $file->getClientOriginalExtension();
+            $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
+            $request->file('file_surat')->move("document/surat", $fileName);
+            $file_surat = $fileName;
+        }
+
+         dd($file_surat);
          SuratSurvei::create([
-                 'judul_surat' => $request->get('judul_surat'),
+                 'no_agenda' => $request->get('no_agenda'),
+                 'no_surat' => $request->get('no_surat'),
+                 'pengirim' => $request->get('pengirim'),
+                 'perihal' => $request->get('perihal'),
+                 'tgl_surat_asal' => $request->get('tgl_surat_asal'),
+                 'tgl_surat' => $request->get('tgl_surat'),
+                 'file_surat' => $file_surat,
+                 'jenis_surat' => $request->get('jenis_surat'),
              ]);
+
  
          alert()->success('Berhasil.','Data telah ditambahkan!');
- 
-         return redirect()->route('suratsurvei.index');
+        
+            
+         return redirect()->route('surat_survei.index');
  
      }
  

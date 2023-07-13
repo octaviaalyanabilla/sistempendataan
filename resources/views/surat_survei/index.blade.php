@@ -50,7 +50,13 @@
                         <thead>
                             <tr>
                                 <th>
-                                    Judul
+                                    Nomor Agenda
+                                </th>
+                                <th>
+                                    Nomor Surat
+                                </th>
+                                <th>
+                                    Pengirim
                                 </th>
                                 <th>
                                     Perihal
@@ -59,7 +65,7 @@
                                     Tanggal Surat
                                 </th>
                                 <th>
-                                    History
+                                    Status
                                 </th>
                                 <th>
                                     Action
@@ -70,15 +76,24 @@
                             @foreach($surat_survei as $surat_surveis)
                             <tr>
                                 <td class="py-1">
-                                    <a href="{{route('surat_survei.show', $surat_survei->id)}}">
-                                        {{$surat_surveis->judul_surat}}
+                                    <a href="{{route('surat_survei.show', $surat_surveis->id)}}">
+                                        {{$surat_surveis->no_agenda}}
                                     </a>
                                 </td>
                                 <td>
-                                    {{$surat_surveis->jumlah_data}}
+                                    {{$surat_surveis->nomor_surat}}
                                 </td>
                                 <td>
-                                    {{$surat_surveis->tahun_data}}
+                                    {{$surat_surveis->pengirim}}
+                                </td>
+                                <td>
+                                    {{$surat_surveis->perihal}}
+                                </td>
+                                <td>
+                                    {{$surat_surveis->tanggal_surat}}
+                                </td>
+                                <td>
+                                    {{$surat_surveis->status}}
                                 </td>
                                 <td>
                                     <div class="btn-group dropdown">
@@ -88,8 +103,8 @@
                                         </button>
                                         <div class="dropdown-menu" x-placement="bottom-start"
                                             style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 30px, 0px);">
-                                            <a class="dropdown-item" href="{{route('surat_survei.edit', $surat_survei->id)}}"> Edit </a>
-                                            <form action="{{ route('surat_survei.destroy', $surat_survei->id) }}" class="pull-left"
+                                            <a class="dropdown-item" href="{{route('surat_survei.edit', $surat_surveis->id)}}"> Edit </a>
+                                            <form action="{{ route('surat_survei.destroy', $surat_surveis->id) }}" class="pull-left"
                                                 method="post">
                                                 {{ csrf_field() }}
                                                 {{ method_field('delete') }}

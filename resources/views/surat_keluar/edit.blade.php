@@ -35,7 +35,7 @@
 
 @section('content')
 
-<form action="{{ route('surat_keluar.update', $surat_keluar->id) }}" method="post" enctype="multipart/form-data">
+<form action="{{ route('surat_keluar.update', $surat_keluars->id) }}" method="post" enctype="multipart/form-data">
     {{ csrf_field() }}
     {{ method_field('put') }}
     <div class="row">
@@ -44,16 +44,16 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">Edit Data - <b>{{$surat_keluar->judul_surat}}</b> </h4>
+                            <h4 class="card-title">Edit Data - <b>{{$surat_keluars->no_agendask}}</b> </h4>
                             <form class="forms-sample">
-                                <div class="form-group{{ $errors->has('judul_surat') ? ' has-error' : '' }}">
-                                    <label for="judul" class="col-md-4 control-label">Judul</label>
+                                <div class="form-group{{ $errors->has('no_agendask') ? ' has-error' : '' }}">
+                                    <label for="no_agendask" class="col-md-4 control-label">Nomor Agenda</label>
                                     <div class="col-md-6">
-                                        <input id="judul_surat" type="text" class="form-control" name="judul_surat" placeholder="Judul"
-                                            value="{{ $surat_keluar->judul_surat }}" required>
-                                        @if ($errors->has('judul_surat'))
+                                        <input id="no_agendask" type="text" class="form-control" name="no_agendask" placeholder="no_agendask"
+                                            value="{{ $surat_keluars->no_agendask }}" required>
+                                        @if ($errors->has('no_agendask'))
                                         <span class="help-block">
-                                            <strong>{{ $errors->first('judul_surat') }}</strong>
+                                            <strong>{{ $errors->first('no_agendask') }}</strong>
                                         </span>
                                         @endif
                                     </div>

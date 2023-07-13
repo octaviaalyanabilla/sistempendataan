@@ -94,7 +94,7 @@
                     <a class="nav-link {{ setActive(['surat_survei*']) }}" href="{{route('surat_survei.index')}}">Surat Masuk</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ setActive(['surat_survei*']) }}" href="{{route('surat_survei.index')}}">Surat Keluar</a>
+                    <a class="nav-link {{ setActive(['surat_keluar*']) }}" href="{{route('surat_keluar.index')}}">Surat Keluar</a>
                 </li>
 </div>
     <li class="nav-item">

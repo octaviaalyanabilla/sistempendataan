@@ -10,11 +10,11 @@ class Suratsurvei extends Model
     use HasFactory;
 
     protected $table = 'surat_survei';
-    protected $fillable = ['judul_surat_id', 'perihal', 'tanggal_surat', 'file_surat', 'jenis_surat'];
+    protected $fillable = ['no_agenda', 'no_surat', 'pengirim', 'perihal', 'tgl_surat_asal', 'tgl_surat', 'file_surat', 'jenis_surat'];
     
     public function surat_survei()
     {
-        return $this->belongsTo(SuratSurvei::class, 'judul_surat_id');
+        return $this->belongsTo(SuratSurvei::class, 'no_agenda');
     }
 
     
