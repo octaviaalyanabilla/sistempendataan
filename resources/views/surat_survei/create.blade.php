@@ -21,17 +21,7 @@ $(document).ready(function() {
                         <div class="card-body">
                             <h4 class="card-title">Add New Surat Masuk</h4>
 
-                            <div class="form-group{{ $errors->has('no_agenda') ? ' has-error' : '' }}">
-                                <label for="no_agenda" class="col-md-4 control-label">Nomor Agenda</label>
-                                <div class="col-md-6">
-                                    <input id="no_agenda" type="text" class="form-control" name="no_agenda" placeholder="Nomor Agenda" required>
-                                    @if ($errors->has('no_agenda'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('no_agenda') }}</strong>
-                                    </span>
-                                    @endif
-                                </div>
-                            </div>
+                            
                             <div class="form-group{{ $errors->has('no_surat') ? ' has-error' : '' }}">
                                 <label for="no_surat" class="col-md-4 control-label">Nomor Surat</label>
                                 <div class="col-md-6">

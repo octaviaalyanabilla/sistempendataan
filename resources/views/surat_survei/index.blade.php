@@ -50,7 +50,7 @@
                         <thead>
                             <tr>
                                 <th>
-                                    Nomor Agenda
+                                    Nomor
                                 </th>
                                 <th>
                                     Nomor Surat
@@ -76,12 +76,12 @@
                             @foreach($surat_survei as $surat_surveis)
                             <tr>
                                 <td class="py-1">
-                                    <a href="{{route('surat_survei.show', $surat_surveis->id)}}">
-                                        {{$surat_surveis->no_agenda}}
+                                    <a href="{{route('surat_survei.show', $surat_surveis->nomor)}}">
+                                        {{$surat_surveis->nomor}}
                                     </a>
                                 </td>
                                 <td>
-                                    {{$surat_surveis->nomor_surat}}
+                                    {{$surat_surveis->no_surat}}
                                 </td>
                                 <td>
                                     {{$surat_surveis->pengirim}}
@@ -90,7 +90,7 @@
                                     {{$surat_surveis->perihal}}
                                 </td>
                                 <td>
-                                    {{$surat_surveis->tanggal_surat}}
+                                    {{$surat_surveis->tgl_surat}}
                                 </td>
                                 <td>
                                     {{$surat_surveis->status}}
@@ -103,8 +103,8 @@
                                         </button>
                                         <div class="dropdown-menu" x-placement="bottom-start"
                                             style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 30px, 0px);">
-                                            <a class="dropdown-item" href="{{route('surat_survei.edit', $surat_surveis->id)}}"> Edit </a>
-                                            <form action="{{ route('surat_survei.destroy', $surat_surveis->id) }}" class="pull-left"
+                                            <a class="dropdown-item" href="{{route('surat_survei.edit', $surat_surveis->nomor)}}"> Edit </a>
+                                            <form action="{{ route('surat_survei.destroy', $surat_surveis->nomor) }}" class="pull-left"
                                                 method="post">
                                                 {{ csrf_field() }}
                                                 {{ method_field('delete') }}

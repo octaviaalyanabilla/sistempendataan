@@ -84,13 +84,12 @@ class SuratKeluarController extends Controller
      public function store(Request $request)
      {
          $this->validate($request, [
-            'no_agendask' => 'required|string|max:255',
             'no_suratsk' => 'required|string|max:255',
             'pengirimsk' => 'required|string|max:255',
-            'perihal_sk' => 'required|string|max:255',
+            'perihalsk' => 'required|string|max:255',
             'tgl_sk' => 'required|string|max:255',
             'file_surat_keluar'=>'required|string|max:255',
-            'jenis_sk' => 'required|string|max:255'
+            'jenis_sk' => 'required'
 
          ]);
          if($request->file('file_surat_keluar') == '') {
@@ -107,10 +106,9 @@ class SuratKeluarController extends Controller
  
          SuratKeluar::create([
                  'surat_keluar' => $request->get('surat_keluar'),
-                 'no_agendask' => $request->get('no_agendask'),
                  'no_suratsk' => $request->get('no_suratsk'),
                  'pengirimsk' => $request->get('pengirimsk'),
-                 'perihal_sk' => $request->get('perihal_sk'),
+                 'perihalsk' => $request->get('perihal_sk'),
                  'tgl_sk' => $request->get('tgl_sk'),
                  'file_surat_keluar' => $file_surat_keluar,
                  'jenis_sk' => $request->get('jenis_sk'),

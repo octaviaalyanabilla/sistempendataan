@@ -14,14 +14,13 @@ class CreateSuratKeluarTable extends Migration
     public function up()
     {
         Schema::create('surat_keluar', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('no_agendask');
+            $table->increments('nomorsk');
             $table->integer('no_suratsk');
             $table->string('pengirimsk');
             $table->string('perihalsk')->nullable();
             $table->date('tgl_sk')->nullable();
             $table->string('file_surat_keluar')->nullable();
-            $table->enum('jenis_sk', ['penting'], ['biasa'])->nullable();
+            $table->enum('jenis_sk', ['penting', 'biasa'])->nullable();
             $table->timestamps();
         });
     }

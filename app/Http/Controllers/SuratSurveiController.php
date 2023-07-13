@@ -73,8 +73,7 @@ class SuratSurveiController extends Controller
      public function store(Request $request)
      {
         $this->validate($request, [
-            'no_agenda' => 'required',
-            'no_surat' => 'required',
+            'no_surat' => 'required|string|max:255',
             'pengirim' => 'required|string|max:255',
             'perihal' => 'required|string|max:255',
             'tgl_surat_asal' => 'required|string|max:255',
@@ -92,9 +91,8 @@ class SuratSurveiController extends Controller
             $file_surat = $fileName;
         }
 
-         dd($file_surat);
+         
          SuratSurvei::create([
-                 'no_agenda' => $request->get('no_agenda'),
                  'no_surat' => $request->get('no_surat'),
                  'pengirim' => $request->get('pengirim'),
                  'perihal' => $request->get('perihal'),

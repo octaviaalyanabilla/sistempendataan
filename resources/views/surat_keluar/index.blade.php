@@ -16,7 +16,7 @@
 
     <div class="col-lg-2">
         <a href="{{ route('surat_keluar.create') }}" class="btn btn-primary btn-rounded btn-fw"><i class="fa fa-plus"></i>
-          Add Surat keluar</a>
+          Add Surat Keluar</a>
     </div>
     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         {{-- <form action="{{ url('import_data') }}" method="post" class="form-inline" enctype="multipart/form-data">
@@ -50,7 +50,7 @@
                         <thead>
                             <tr>
                                 <th>
-                                    Nomor Agenda
+                                    Nomor 
                                 </th>
                                 <th>
                                     Nomor Surat
@@ -76,21 +76,24 @@
                             @foreach($surat_keluar as $surat_keluars)
                             <tr>
                                 <td class="py-1">
-                                    <a href="{{route('surat_keluar.show', $surat_keluars->id)}}">
-                                        {{$surat_keluars->no_agendask}}
+                                    <a href="{{route('surat_keluar.show', $surat_keluars->nomorsk)}}">
+                                        {{$surat_keluars->nomorsk}}
                                     </a>
                                 </td>
                                 <td>
                                     {{$surat_keluars->no_suratsk}}
                                 </td>
                                 <td>
-                                    {{$surat_keluars->pengirim}}
+                                    {{$surat_keluars->pengirimsk}}
                                 </td>
                                 <td>
-                                    {{$surat_keluars->perihal}}
+                                    {{$surat_keluars->perihalsk}}
                                 </td>
                                 <td>
                                     {{$surat_keluars->tgl_sk}}
+                                </td>
+                                <td>
+                                    {{$surat_keluars->status}}
                                 </td>
                                 <td>
                                     <div class="btn-group dropdown">
@@ -100,8 +103,8 @@
                                         </button>
                                         <div class="dropdown-menu" x-placement="bottom-start"
                                             style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 30px, 0px);">
-                                            <a class="dropdown-item" href="{{route('surat_keluar.edit', $surat_keluars->id)}}"> Edit </a>
-                                            <form action="{{ route('surat_keluar.destroy', $surat_keluars->id) }}" class="pull-left"
+                                            <a class="dropdown-item" href="{{route('surat_keluar.edit', $surat_keluars->nomorsk)}}"> Edit </a>
+                                            <form action="{{ route('surat_keluar.destroy', $surat_keluars->nomorsk) }}" class="pull-left"
                                                 method="post">
                                                 {{ csrf_field() }}
                                                 {{ method_field('delete') }}
