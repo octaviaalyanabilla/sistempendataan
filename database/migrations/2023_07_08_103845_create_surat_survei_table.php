@@ -14,7 +14,7 @@ class CreateSuratSurveiTable extends Migration
     public function up()
     {
         Schema::create('surat_survei', function (Blueprint $table) {
-            $table->increments('nomor');
+            $table->bigIncrements('id');
             $table->integer('no_surat');
             $table->string('pengirim');
             $table->string('perihal')->nullable();

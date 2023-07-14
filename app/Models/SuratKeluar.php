@@ -14,7 +14,7 @@ class SuratKeluar extends Model
     
     public function surat_keluar()
     {
-        return $this->belongsTo(SuratKeluar::class, 'nomorsk');
+        return $this->belongsTo(SuratKeluar::class, 'id');
     }
 
     

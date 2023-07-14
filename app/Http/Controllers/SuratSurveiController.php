@@ -155,7 +155,7 @@ class SuratSurveiController extends Controller
      public function update(Request $request, $id)
      {
          SuratSurvei::find($id)->update([
-             'judul_surat' => $request->get('judul_surat')
+             'no_surat' => $request->get('no_surat')
          ]);
  
          alert()->success('Berhasil.','Data telah diubah!');

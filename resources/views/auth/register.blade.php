@@ -105,7 +105,6 @@
                                     <select class="form-control" name="level" placeholder="Level User" required="">
                                         <option value="">-- Pilih Level User --</option>
                                         <option value="admin">Admin (Tim Pendataan)</option>
-                                        <option value="user">User</option>
                                         <option value="kepala bidang um">Kepala Bidang UM</option>
                                         <option value="kepala dinas">Kepala Dinas</option>
                                     </select>

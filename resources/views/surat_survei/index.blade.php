@@ -76,8 +76,8 @@
                             @foreach($surat_survei as $surat_surveis)
                             <tr>
                                 <td class="py-1">
-                                    <a href="{{route('surat_survei.show', $surat_surveis->nomor)}}">
-                                        {{$surat_surveis->nomor}}
+                                    <a href="{{route('surat_survei.show', $surat_surveis->id)}}">
+                                        {{$surat_surveis->id}}
                                     </a>
                                 </td>
                                 <td>
@@ -103,8 +103,8 @@
                                         </button>
                                         <div class="dropdown-menu" x-placement="bottom-start"
                                             style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 30px, 0px);">
-                                            <a class="dropdown-item" href="{{route('surat_survei.edit', $surat_surveis->nomor)}}"> Edit </a>
-                                            <form action="{{ route('surat_survei.destroy', $surat_surveis->nomor) }}" class="pull-left"
+                                            <a class="dropdown-item" href="{{route('surat_survei.edit', $surat_surveis->id)}}"> Edit </a>
+                                            <form action="{{ route('surat_survei.destroy', $surat_surveis->id) }}" class="pull-left"
                                                 method="post">
                                                 {{ csrf_field() }}
                                                 {{ method_field('delete') }}

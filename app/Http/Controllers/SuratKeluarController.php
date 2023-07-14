@@ -59,16 +59,6 @@ class SuratKeluarController extends Controller
              'importData' => 'required'
          ]);
         
-         if($request->file('docpdf') == '') {
-            $docpdf = NULL;
-        } else {
-            $file = $request->file('docpdf');
-            $dt = Carbon::now();
-            $acak  = $file->getClientOriginalExtension();
-            $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
-            $request->file('docpdf')->move("document/surat", $fileName);
-            $docpdf = $fileName;
-        }
                    
          
          alert()->success('Berhasil.','Data telah diimport!');
@@ -88,7 +78,6 @@ class SuratKeluarController extends Controller
             'pengirimsk' => 'required|string|max:255',
             'perihalsk' => 'required|string|max:255',
             'tgl_sk' => 'required|string|max:255',
-            'file_surat_keluar'=>'required|string|max:255',
             'jenis_sk' => 'required'
 
          ]);
@@ -103,15 +92,13 @@ class SuratKeluarController extends Controller
             $file_surat_keluar = $fileName;
         }
 
- 
          SuratKeluar::create([
-                 'surat_keluar' => $request->get('surat_keluar'),
                  'no_suratsk' => $request->get('no_suratsk'),
                  'pengirimsk' => $request->get('pengirimsk'),
-                 'perihalsk' => $request->get('perihal_sk'),
+                 'perihalsk' => $request->get('perihalsk'),
                  'tgl_sk' => $request->get('tgl_sk'),
                  'file_surat_keluar' => $file_surat_keluar,
-                 'jenis_sk' => $request->get('jenis_sk'),
+                 'jenis_sk' => $request->get('jenis_sk')
 
              ]);
  
@@ -166,7 +153,7 @@ class SuratKeluarController extends Controller
      public function update(Request $request, $id)
      {
          SuratKeluar::find($id)->update([
-             'surat_keluar' => $request->get('surat_keluar')
+             'no_suratsk' => $request->get('no_suratsk')
          ]);
  
          alert()->success('Berhasil.','Data telah diubah!');
