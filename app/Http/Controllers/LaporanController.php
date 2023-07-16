@@ -32,8 +32,11 @@ class LaporanController extends Controller
 
     public function dataPdf() {
 
-        $datautama = DataUm::all();
-        $pdf = PDF::loadView('laporan.data_pdf', compact('data'));
+        $users = User::get();
+        $data_um = DataUM::get();
+        $pdf = PDF::loadView('laporan.data_pdf', compact('data_um'
+        // ,'nik','nomor_kk','alamat','bidang_usaha', 'jenis_usaha', 'telepon', 'sku', 'omset', 'aset', 'pemasaran', 'tk'
+    ));
         return $pdf -> download('laporan_data_'.date('Y-m-d_H-i-s').
             '.pdf');
     }

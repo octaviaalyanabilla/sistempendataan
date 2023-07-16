@@ -116,46 +116,46 @@
             </tr>
         </thead>
         <tbody>
-            @foreach($datas as $data)
+            @foreach($data_um as $data_ums)
             <tr>
                 <td class="py-1">
-                    {{$data->nama_pelaku_usaha}}
+                    {{$data_ums->nama_data}}
                 </td>
                 <td>
 
-                    {{$data->nik}}
+                    {{$data_ums->nik}}
 
                 </td>
 
                 <td>
-                    {{$data->nomorkk}}
+                    {{$data_ums->nomor_kk}}
                 </td>
                 <td>
-                    {{$data->alamat}}
+                    {{$data_ums->alamat}}
                 </td>
                 <td>
-                    {{$data->bidang_usaha}}
+                    {{$data_ums->bidang_usaha}}
                 </td>
                 <td>
-                    {{$data->jenis_usaha}}
+                    {{$data_ums->jenis_usaha}}
                 </td>
                 <td>
-                    {{$data->telepon}}
+                    {{$data_ums->telepon}}
                 </td>
                 <td>
-                    {{$data->sku}}
+                    {{$data_ums->sku}}
                 </td>
                 <td>
-                    {{$data->omset}}
+                    {{$data_ums->omset}}
                 </td>
                 <td>
-                    {{$data->aset}}
+                    {{$data_ums->aset}}
                 </td>
                 <td>
-                    {{$data->pemasaran}}
+                    {{$data_ums->pemasaran}}
                 </td>
                 <td>
-                    {{$data->tk}}
+                    {{$data_ums->tk}}
                 </td>
             </tr>
             @endforeach

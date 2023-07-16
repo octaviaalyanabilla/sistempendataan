@@ -16,7 +16,7 @@
 
     <div class="col-lg-2">
         <a href="{{ route('data_um.create') }}" class="btn btn-primary btn-rounded btn-fw"><i class="fa fa-plus"></i>
-          Add Data</a>
+          Add Data UM</a>
     </div>
     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         {{-- <form action="{{ url('import_data') }}" method="post" class="form-inline" enctype="multipart/form-data">

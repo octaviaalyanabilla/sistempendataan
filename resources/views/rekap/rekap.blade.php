@@ -23,7 +23,7 @@
                 <h4 class="card-title">Rekap Data</h4>
 
                 <div class="col-md-2 pull-left">
-                    <a href="{{ url('laporan/data/pdf') }}" class="btn btn-primary btn-rounded btn-fw"><b><i
+                    <a href="{{ url('rekap/data/pdf') }}" class="btn btn-primary btn-rounded btn-fw"><b><i
                                 class="fa fa-download"></i> Export PDF</a></b>
                 </div>
             </div>

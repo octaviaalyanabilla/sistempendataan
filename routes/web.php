@@ -7,7 +7,10 @@ use App\Http\Controllers\AnggotaController;
 use App\Http\Controllers\DataUMController;
 use App\Http\Controllers\SuratSurveiController;
 use App\Http\Controllers\SuratKeluarController;
+use App\Http\Controllers\DisposisiController;
 use App\Http\Controllers\LaporanController;
+use App\Http\Controllers\RekapController;
+use App\Http\Controllers\LoginController;
 use Illuminate\Http\Request;
 
 /*
@@ -42,5 +45,10 @@ Route::resource('/surat_survei', SuratSurveiController::class);
 
 Route::resource('/surat_keluar', SuratKeluarController::class);
 
+Route::resource('/disposisi', DisposisiController::class);
+
 Route::get('/laporan/data', [LaporanController::class, 'data']);
 Route::get('/laporan/data/pdf', [LaporanController::class, 'dataPdf']);
+
+Route::get('/rekap/data', [RekapController::class, 'data']);
+Route::get('/rekap/data/pdf', [RekapController::class, 'dataPdf']);

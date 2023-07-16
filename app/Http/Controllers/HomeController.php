@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Anggota;
 use App\Models\DataUM;
+use App\Models\SuratKeluar;
+use App\Models\SuratSurvei;
 use Illuminate\Http\Request;
 use Auth;
 
@@ -26,9 +28,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $anggota   = Anggota::get();
+        $surat_keluar = SuratKeluar::get();
         $dataum = DataUM::get();
+        $surat_survei = SuratSurvei::get();
         
-        return view('home', compact('anggota', 'dataum'));
+        return view('home', compact('surat_keluar', 'dataum', 'surat_survei'));
     }
 }
