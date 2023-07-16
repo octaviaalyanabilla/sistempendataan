@@ -87,6 +87,7 @@ $(function() {
                                 </div>
                             </div>
 
+
                             <div class="form-group{{ $errors->has('bidang_usaha') ? ' has-error' : '' }}">
                                 <label for="bidang_usaha" class="col-md-4 control-label">Bidang Usaha</label>
                                 <div class="col-md-6">

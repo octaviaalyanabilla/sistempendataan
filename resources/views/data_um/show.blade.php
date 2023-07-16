@@ -47,7 +47,7 @@
                             <div class="form-group{{ $errors->has('nama_data') ? ' has-error' : '' }}">
                                 <label for="nama_data" class="col-md-4 control-label">Nama Data</label>
                                 <div class="col-md-6">
-                                    <input id="judul" type="text" class="form-control" name="nama_data"
+                                    <input id="nama_data" type="text" class="form-control" name="nama_data"
                                         value="{{ $data_um->nama_data }}" readonly="">
                                     @if ($errors->has('nama_data'))
                                     <span class="help-block">
