@@ -73,7 +73,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($surat_keluar as $surat_keluars)
+                            @foreach($surat_keluar as $key => $surat_keluars)
                             <tr>
                                 <td class="py-1">
                                     <a href="{{route('surat_keluar.show', $surat_keluars->id)}}">
@@ -93,7 +93,12 @@
                                     {{$surat_keluars->tgl_sk}}
                                 </td>
                                 <td>
-                                    {{$surat_keluars->status}}
+                                    @if($disposisi[$key] == 2) 
+                                    <a style="color:green;"> Terdisposisi </a>
+                                    @elseif($disposisi[$key] == 1)
+                                    <a style="color:blue;"> Menunggu </a>
+                                    @endif($disposisi[$key] == 0)
+                                   <a style="color:red;"> Belum Terdisposisi</a>
                                 </td>
                                 <td>
                                     @if(Auth::user()->level == 'admin')
@@ -115,9 +120,9 @@
                                                 </button>
                                             </form>
                                             @elseif(Auth::user()->level == 'kepala bidang um')
-                                            <a class="btn btn-info">Lihat </a>
+                                            <a class="btn btn-info" href="{{route('surat_keluar.detail', ['id'=>$surat_keluars->id])}}">Lihat </a>
                                             @else
-                                            <a class="btn btn-info">Lihat </a>
+                                            <a class="btn btn-info" href="{{route('surat_keluar.detail', ['id'=>$surat_keluars->id])}}">Lihat </a>
                                             @endif
                                         </div>
                                     </div>

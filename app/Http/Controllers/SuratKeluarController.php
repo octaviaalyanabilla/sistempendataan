@@ -36,7 +36,23 @@ class SuratKeluarController extends Controller
          }
  
          $surat_keluar = SuratKeluar::get();
-         return view('surat_keluar.index', compact('surat_keluar'));
+         $disposisi = [];
+         foreach ($surat_keluar as $key => $value) {
+            $data = Disposisi::where('surat_id', $value->id)->first();
+            if(Auth::user()->level == 'admin'){
+                $disposisi[$key] = $data->admin_approval;
+            }
+        
+            if(Auth::user()->level == 'kepala bidang um'){
+                $disposisi[$key] = $data->kabid_approval;
+            } else {
+              
+                    $disposisi[$key] = $data->kadin_approval;
+            }
+        }
+        
+        
+         return view('surat_keluar.index', compact('surat_keluar', 'disposisi'));
      }
  
      /**
@@ -162,7 +178,12 @@ class SuratKeluarController extends Controller
      public function update(Request $request, $id)
      {
          SuratKeluar::find($id)->update([
-             'no_suratsk' => $request->get('no_suratsk')
+            'no_suratsk' => $request->get('no_suratsk'),
+            'pengirimsk' => $request->get('pengirimsk'),
+            'perihalsk' => $request->get('perihalsk'),
+            'tgl_sk' => $request->get('tgl_sk'),
+            'file_surat_keluar' => $file_surat_keluar,
+            'jenis_sk' => $request->get('jenis_sk')
          ]);
  
          alert()->success('Berhasil.','Data telah diubah!');
@@ -180,5 +201,16 @@ class SuratKeluarController extends Controller
          SuratKeluar::find($id)->delete();
          alert()->success('Berhasil.','Data telah dihapus!');
          return redirect()->route('surat_keluar.index');
+     }
+
+     public function detail($id)
+     {   
+         if((Auth::user()->level == 'user') && (Auth::user()->id != $id)) {
+             Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
+             return redirect()->to('/');
+     }
+ 
+         $surat_keluar = SuratKeluar::findOrFail($id);
+         return view('surat_keluar.detail', compact('surat_keluar'));
      }
  }

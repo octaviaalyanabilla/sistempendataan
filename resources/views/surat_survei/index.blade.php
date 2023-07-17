@@ -73,7 +73,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($surat_survei as $surat_surveis)
+                            @foreach($surat_survei as $key=> $surat_surveis)
                             <tr>
                                 <td class="py-1">
                                     <a href="{{route('surat_survei.show', $surat_surveis->id)}}">
@@ -93,7 +93,12 @@
                                     {{$surat_surveis->tgl_surat}}
                                 </td>
                                 <td>
-                                    {{$surat_surveis->status}}
+                                    @if($disposisi[$key] == 2) 
+                                    <a style="color:green;"> Terdisposisi </a>
+                                    @elseif($disposisi[$key] == 1)
+                                    <a style="color:blue;"> Menunggu </a>
+                                    @endif($disposisi[$key] == 0)
+                                   <a style="color:red;"> Belum Terdisposisi</a>
                                 </td>
                                 <td>
                                 @if(Auth::user()->level == 'admin')
@@ -115,11 +120,9 @@
                                                 </button>
                                             </form>
                                             @elseif(Auth::user()->level == 'kepala bidang um')
-                                            <a class="btn btn-info" href="{{route('surat_survei.edit', $surat_surveis->id)}}">Lihat</a>
-                                            <form action="{{ route($surat_surveis->id) }}" class="pull-left"
-                                                method="post">
+                                            <a class="btn btn-info" href="{{route('surat_survei.detail', ['id'=>$surat_surveis->id])}}">Lihat</a>
                                             @else
-                                            <a class="btn btn-info">Lihat</a>
+                                            <a class="btn btn-info" href="{{route('surat_survei.detail',['id'=>$surat_surveis->id])}}">Lihat</a>
                                             @endif
                                         </div>
                                     </div>

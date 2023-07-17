@@ -34,9 +34,23 @@ class SuratSurveiController extends Controller
              Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
              return redirect()->to('/');
          }
- 
+         
          $surat_survei = SuratSurvei::get();
-         return view('surat_survei.index', compact('surat_survei'));
+         $disposisi = [];
+         foreach ($surat_survei as $key => $value) {
+            $data = Disposisi::where('surat_id', $value->id)->first();
+            if(Auth::user()->level == 'admin'){
+                $disposisi[$key] = $data->admin_approval;
+            }
+        
+            if(Auth::user()->level == 'kepala bidang um'){
+                $disposisi[$key] = $data->kabid_approval;
+            } else {
+              
+                    $disposisi[$key] = $data->kadin_approval;
+            }
+         }
+         return view('surat_survei.index', compact('surat_survei', 'disposisi'));
      }
  
      /**
@@ -164,7 +178,13 @@ class SuratSurveiController extends Controller
      public function update(Request $request, $id)
      {
          SuratSurvei::find($id)->update([
-             'no_surat' => $request->get('no_surat')
+            'no_surat' => $request->get('no_surat'),
+            'pengirim' => $request->get('pengirim'),
+            'perihal' => $request->get('perihal'),
+            'tgl_surat_asal' => $request->get('tgl_surat_asal'),
+            'tgl_surat' => $request->get('tgl_surat'),
+            'file_surat' => $file_surat,
+            'jenis_surat' => $request->get('jenis_surat'),
          ]);
  
          alert()->success('Berhasil.','Data telah diubah!');
@@ -182,5 +202,16 @@ class SuratSurveiController extends Controller
          SuratSurvei::find($id)->delete();
          alert()->success('Berhasil.','Data telah dihapus!');
          return redirect()->route('surat_survei.index');
+     }
+
+     public function detail($id)
+     {   
+         if((Auth::user()->level == 'user') && (Auth::user()->id != $id)) {
+             Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
+             return redirect()->to('/');
+     }
+ 
+         $surat_survei = SuratSurvei::findOrFail($id);
+         return view('surat_survei.detail', compact('surat_survei'));
      }
  }

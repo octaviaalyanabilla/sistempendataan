@@ -50,3 +50,6 @@ Route::get('/laporan/data/pdf', [LaporanController::class, 'dataPdf']);
 
 Route::get('/rekap/data', [RekapController::class, 'data']);
 Route::get('/rekap/data/pdf', [RekapController::class, 'dataPdf']);
+
+Route::get('/surat_survei/detail/{id}', [SuratSurveiController::class, 'detail'])->name('surat_survei.detail');
+Route::get('/surat_keluar/detail/{id}', [SuratKeluarController::class, 'detail'])->name('surat_keluar.detail');
