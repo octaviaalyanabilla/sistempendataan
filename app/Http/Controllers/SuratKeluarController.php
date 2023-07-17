@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\DataUM;
 use App\Models\SuratKeluar;
+use App\Models\Disposisi;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Session;
@@ -92,7 +93,7 @@ class SuratKeluarController extends Controller
             $file_surat_keluar = $fileName;
         }
 
-         SuratKeluar::create([
+        $surat_keluar = SuratKeluar::create([
                  'no_suratsk' => $request->get('no_suratsk'),
                  'pengirimsk' => $request->get('pengirimsk'),
                  'perihalsk' => $request->get('perihalsk'),
@@ -101,6 +102,14 @@ class SuratKeluarController extends Controller
                  'jenis_sk' => $request->get('jenis_sk')
 
              ]);
+
+             Disposisi::create([
+                'surat_id' => $surat_keluar->id,
+                'tipe' => 'keluar',
+                'admin_approval' => '2',
+                'kabid_approval' => '0',
+                'kadin_approval' => '0',
+            ]);
  
          alert()->success('Berhasil.','Data telah ditambahkan!');
  

@@ -158,7 +158,18 @@ class DataUMController extends Controller
     public function update(Request $request, $id)
     {
         DataUM::find($id)->update([
-            'nama_data' => $request->get('nama_data')
+            'nama_data' => $request->get('nama_data'),
+            'nik' => $request->get('nik'),
+            'nomor_kk' => $request->get('nomor_kk'),
+            'alamat' => $request->get('alamat'),
+            'bidang_usaha'=> $request->get('bidang_usaha'),
+            'jenis_usaha' => $request->get('jenis_usaha'),
+            'telepon' => $request->get('telepon'),
+            'sku' => $request->get('sku'),
+            'omset' => $request->get('omset'),
+            'aset' => $request->get('aset'),
+            'pemasaran' => $request->get('pemasaran'),
+            'tk' => $request->get('tk'),
         ]);
 
         alert()->success('Berhasil.','Data telah diubah!');

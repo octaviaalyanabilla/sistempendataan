@@ -83,13 +83,18 @@ $(document).ready(function() {
                                     </select>
                                 </div>
                             </div>
-                            
+                            @if(Auth::user()->level == 'admin')
                             <button type="submit" class="btn btn-primary" id="submit">
                                 Submit
                             </button>
                             <button type="reset" class="btn btn-danger">
                                 Reset
                             </button>
+                            <button type="disposisi" class="btn btn-primary" id="disposisi">
+                               Disposisi
+                            </button>
+                            @endif
+
                             <a href="{{route('surat_keluar.index')}}" class="btn btn-light pull-right">Back</a>
                         </div>
                     </div>

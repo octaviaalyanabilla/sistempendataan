@@ -164,11 +164,6 @@ class DisposisiController extends Controller
       * @param  int  $id
       * @return \Illuminate\Http\Response
       */
-     public function destroy($id)
-     {
-         Disposisi::find($id)->delete();
-         alert()->success('Berhasil.','Data telah dihapus!');
-         return redirect()->route('disposisi.index');
-     }
+     
  }
 

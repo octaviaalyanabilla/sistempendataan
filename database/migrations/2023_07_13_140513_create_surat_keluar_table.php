@@ -15,7 +15,7 @@ class CreateSuratKeluarTable extends Migration
     {
         Schema::create('surat_keluar', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('no_suratsk');
+            $table->string('no_suratsk');
             $table->string('pengirimsk');
             $table->string('perihalsk')->nullable();
             $table->date('tgl_sk')->nullable();

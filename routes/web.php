@@ -45,8 +45,6 @@ Route::resource('/surat_survei', SuratSurveiController::class);
 
 Route::resource('/surat_keluar', SuratKeluarController::class);
 
-Route::resource('/disposisi', DisposisiController::class);
-
 Route::get('/laporan/data', [LaporanController::class, 'data']);
 Route::get('/laporan/data/pdf', [LaporanController::class, 'dataPdf']);
 

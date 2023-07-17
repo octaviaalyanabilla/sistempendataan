@@ -96,6 +96,7 @@
                                     {{$surat_keluars->status}}
                                 </td>
                                 <td>
+                                    @if(Auth::user()->level == 'admin')
                                     <div class="btn-group dropdown">
                                         <button type="button" class="btn btn-success dropdown-toggle btn-sm"
                                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -113,6 +114,11 @@
                                                     Delete
                                                 </button>
                                             </form>
+                                            @elseif(Auth::user()->level == 'kepala bidang um')
+                                            <a class="btn btn-info">Lihat </a>
+                                            @else
+                                            <a class="btn btn-info">Lihat </a>
+                                            @endif
                                         </div>
                                     </div>
                                 </td>

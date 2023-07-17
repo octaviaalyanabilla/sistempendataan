@@ -167,17 +167,15 @@
                                     </div>
                                 </div>
                                 <div class="form-group{{ $errors->has('pemasaran') ? ' has-error' : '' }}">
-                                    <label for="pemasaran" class="col-md-4 control-label">Pemasaran</label>
+                                <label for="pemasaran" class="col-md-4 control-label">Pemasaran</label>
                                     <div class="col-md-6">
-                                        <input id="pemasaran" type="text" class="form-control" name="pemasaran" placeholder="Pemasaran"
-                                            value="{{ $data_um->pemasaran }}" required>
-                                        @if ($errors->has('pemasaran'))
-                                        <span class="help-block">
-                                            <strong>{{ $errors->first('pemasaran') }}</strong>
-                                        </span>
-                                        @endif
-                                    </div>
+                                    <select class="form-control" name="pemasaran" required="">
+                                        <option value="">-- Pilih Pemasaran --</option>
+                                        <option value="online">Online</option>
+                                        <option value="offline">Offline</option>
+                                    </select>
                                 </div>
+                            </div>
                                 <div class="form-group{{ $errors->has('tk') ? ' has-error' : '' }}">
                                     <label for="tk" class="col-md-4 control-label">Jumlah Tenaga Kerja</label>
                                     <div class="col-md-6">

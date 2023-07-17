@@ -35,6 +35,7 @@ class RekapController extends Controller
     public function dataPdf() {
 
         $users = User::get();
+        $data_um = DataUM::get();
         $surat_survei = SuratSurvei::get();
         $surat_keluar = SuratKeluar::get();
         $pdf = PDF::loadView('rekap.data_pdf', compact('data_um','surat_survei', 'surat_keluar'));

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\DataUM;
 use App\Models\SuratSurvei;
+use App\Models\Disposisi;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Session;
@@ -92,7 +93,7 @@ class SuratSurveiController extends Controller
         }
 
          
-         SuratSurvei::create([
+         $surat_survei = SuratSurvei::create([
                  'no_surat' => $request->get('no_surat'),
                  'pengirim' => $request->get('pengirim'),
                  'perihal' => $request->get('perihal'),
@@ -101,6 +102,14 @@ class SuratSurveiController extends Controller
                  'file_surat' => $file_surat,
                  'jenis_surat' => $request->get('jenis_surat'),
              ]);
+            
+            Disposisi::create([
+                'surat_id' => $surat_survei->id,
+                'tipe' => 'survei',
+                'admin_approval' => '2',
+                'kabid_approval' => '0',
+                'kadin_approval' => '0',
+            ]);
 
  
          alert()->success('Berhasil.','Data telah ditambahkan!');

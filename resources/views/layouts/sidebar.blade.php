@@ -96,9 +96,7 @@
                 <li class="nav-item">
                     <a class="nav-link {{ setActive(['surat_keluar*']) }}" href="{{route('surat_keluar.index')}}">Surat Keluar</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link {{ setActive(['disposisi*']) }}" href="{{route('disposisi.index')}}">Disposisi</a>
-                </li>
+                
 </div>
     <li class="nav-item">
         <a class="nav-link" data-toggle="collapse" href="#ui-laporan" aria-expanded="false" aria-controls="ui-laporan">

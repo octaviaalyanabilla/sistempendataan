@@ -58,7 +58,7 @@ $(function() {
                             <div class="form-group{{ $errors->has('nik') ? ' has-error' : '' }}">
                                 <label for="nik" class="col-md-4 control-label">NIK</label>
                                 <div class="col-md-6">
-                                    <input id="nik" type="text" class="form-control" name="nik" placeholder="NIK" required>
+                                    <input id="nik" type="text" class="form-control" name="nik" placeholder="Masukkan Nomor NIK" required>
                                     @if ($errors->has('nama_data'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('nik') }}</strong>
@@ -70,6 +70,12 @@ $(function() {
                             <div class="form-group{{ $errors->has('nomor_kk') ? ' has-error' : '' }}">
                                 <label for="nomor_kk" class="col-md-4 control-label">Nomor KK</label>
                                 <div class="col-md-6">
+                                <input id="nomor_kk" type="text" class="form-control" name="nomor_kk" placeholder="Masukkan Nomor KK" required>
+                                    @if ($errors->has('nomor_kk'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('nomor_kk') }}</strong>
+                                    </span>
+                                    @endif
                                 <img class="product" width="200" height="200">
                                     <input type="file" class="uploads form-control" style="margin-top: 20px;" name="nomor_kk" placeholder="Nomor KK">
                                     </div>
@@ -78,7 +84,7 @@ $(function() {
                             <div class="form-group{{ $errors->has('alamat') ? ' has-error' : '' }}">
                                 <label for="alamat" class="col-md-4 control-label">Alamat</label>
                                 <div class="col-md-6">
-                                    <input id="alamat" type="text" class="form-control" name="alamat" placeholder="Alamat" required>
+                                    <input id="alamat" type="text" class="form-control" name="alamat" placeholder="Masukkan Alamat" required>
                                     @if ($errors->has('alamat'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('alamat') }}</strong>
