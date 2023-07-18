@@ -105,6 +105,7 @@ class DataUMController extends Controller
                 'aset' => $request->get('aset'),
                 'pemasaran' => $request->get('pemasaran'),
                 'tk' => $request->get('tk'),
+                'validasi' => $request->get('validasi')
             ]);
 
         alert()->success('Berhasil.','Data telah ditambahkan!');
@@ -170,6 +171,7 @@ class DataUMController extends Controller
             'aset' => $request->get('aset'),
             'pemasaran' => $request->get('pemasaran'),
             'tk' => $request->get('tk'),
+            'validasi' => $request->get('validasi')
         ]);
 
         alert()->success('Berhasil.','Data telah diubah!');

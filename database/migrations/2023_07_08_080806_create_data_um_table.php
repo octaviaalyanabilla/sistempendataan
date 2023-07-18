@@ -27,6 +27,7 @@ class CreateDataUmTable extends Migration
             $table->BigInteger('aset');
             $table->enum('pemasaran', ['Online', 'Offline']);
             $table->integer('tk');
+            $table->enum('validasi', ['Valid', 'Belum']);
             $table->timestamps();
         });
     }
