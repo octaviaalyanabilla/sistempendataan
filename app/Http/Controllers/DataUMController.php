@@ -33,7 +33,7 @@ class DataUMController extends Controller
             return redirect()->to('/');
         }
 
-        $data_um = DataUM::get();
+        $data_um = DataUM::where('validasi', 'Belum')->get();
         //dd($data_um);
         return view('data_um.index', compact('data_um'));
     }
@@ -104,8 +104,7 @@ class DataUMController extends Controller
                 'omset' => $request->get('omset'),
                 'aset' => $request->get('aset'),
                 'pemasaran' => $request->get('pemasaran'),
-                'tk' => $request->get('tk'),
-                'validasi' => $request->get('validasi')
+                'tk' => $request->get('tk')
             ]);
 
         alert()->success('Berhasil.','Data telah ditambahkan!');
@@ -170,8 +169,7 @@ class DataUMController extends Controller
             'omset' => $request->get('omset'),
             'aset' => $request->get('aset'),
             'pemasaran' => $request->get('pemasaran'),
-            'tk' => $request->get('tk'),
-            'validasi' => $request->get('validasi')
+            'tk' => $request->get('tk')
         ]);
 
         alert()->success('Berhasil.','Data telah diubah!');
@@ -189,5 +187,25 @@ class DataUMController extends Controller
         DataUM::find($id)->delete();
         alert()->success('Berhasil.','Data telah dihapus!');
         return redirect()->route('data_um.index');
+    }
+
+    public function validasi(Request $request, $id)
+    {
+        // dd($request->all());
+        DataUM::where('id', $id)->update([
+            'validasi' => $request->validasi
+        ]);
+
+        alert()->success('Berhasil.','Data telah valid!');
+        return redirect()->route('data_um.index');
+    }
+
+    public function rekap(Request $request, $id)
+    {
+        // dd($request->all());
+        $data_um = DataUM::where('validasi', 'Valid')->get();
+
+        alert()->success('Berhasil.','Data telah valid!');
+        return view('data_um.rekap', compact('data_um'));
     }
 }

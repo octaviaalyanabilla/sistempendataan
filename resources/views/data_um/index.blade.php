@@ -125,6 +125,11 @@
                                                     Delete
                                                 </button>
                                             </form>
+                                                <form action="{{ url('data_um/validasi/'. $data_ums->id)}}"  >
+                                                <button class="dropdown-item" name = "validasi" value = "Valid" type = "submit"> Validasi </button>
+                                                <div class="btn-group dropdown">
+                                                </form>
+                                            
 
                                         </div>
                                     </div>

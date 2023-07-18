@@ -39,9 +39,6 @@ Route::resource('/anggota', AnggotaController::class);
 
 Route::resource('/data_um', DataUMController::class);
 
-
-
-
 Route::resource('/surat_survei', SuratSurveiController::class);
 
 Route::resource('/surat_keluar', SuratKeluarController::class);
@@ -50,10 +47,11 @@ Route::get('/laporan/data', [LaporanController::class, 'data']);
 Route::get('/laporan/data/pdf', [LaporanController::class, 'dataPdf']);
 
 Route::get('/rekap/data', [RekapController::class, 'data']);
-Route::get('/rekap/data/pdf', [RekapController::class, 'dataPdf']);
 
 Route::get('/surat_survei/detail/{id}', [SuratSurveiController::class, 'detail'])->name('surat_survei.detail');
 Route::get('/surat_keluar/detail/{id}', [SuratKeluarController::class, 'detail'])->name('surat_keluar.detail');
 
 Route::post('/surat_survei/disposisi_action', [SuratSurveiController::class, 'disposisi']);
 Route::post('/surat_keluar/disposisi', [SuratKeluarController::class, 'disposisi'])->name('surat_keluar.disposisi');
+
+Route::get('/data_um/validasi/{id}', [DataUMController::class, 'validasi'])->name('data_um.validasi');
