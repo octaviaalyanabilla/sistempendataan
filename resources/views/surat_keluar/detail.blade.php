@@ -133,7 +133,7 @@
                                     </select>
                                 </div>
                             </div>
-                            <button type="Disposisi" class="btn btn-primary" id="disposisi">
+                            <button type="Disposisi" class="btn btn-primary" id="disposisi" type="submit">
                                 Disposisi
                             </button>
                             

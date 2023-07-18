@@ -37,11 +37,21 @@
                             <div class="form-group{{ $errors->has('nip') ? ' has-error' : '' }}">
                                 <label for="nip" class="col-md-4 control-label">NIP</label>
                                 <div class="col-md-6">
-                                    <input id="nip" type="number" class="form-control" name="nip" placeholder="NIP"
-                                        value="{{ old('nip') }}" maxlength="8" required>
+                                    <input id="nip" type="text" class="form-control" name="nip" placeholder="Masukkan NIP" required>
                                     @if ($errors->has('nip'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('nip') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="form-group{{ $errors->has('jabatan') ? ' has-error' : '' }}">
+                                <label for="jabatan" class="col-md-4 control-label">Jabatan</label>
+                                <div class="col-md-6">
+                                    <input id="jabatan" type="text" class="form-control" name="jabatan" placeholder="Masukkan Jabatan" required>
+                                    @if ($errors->has('jabatan'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('jabatan') }}</strong>
                                     </span>
                                     @endif
                                 </div>

@@ -16,12 +16,12 @@ class UsersTableSeeder extends Seeder
         \App\Models\User::insert([
             [
               'id'  			=> 1,
-              'name'  			=> 'Naila - Admin',
-              'username'		=> 'naila_admin',
-              'email' 			=> 'naila_admin@gmail.com',
-              'password'		=> bcrypt('naila123'),
+              'name'  			=> 'Drs. H. MOKHAMAD FAQIH, M.Si',
+              'username'		=> 'kadin',
+              'email' 			=> 'kadin@gmail.com',
+              'password'		=> bcrypt('kadin123'),
               'gambar'			=> NULL,
-              'level'			=> 'admin',
+              'level'			=> 'kepala dinas',
               'remember_token'	=> NULL,
               'created_at'      => \Carbon\Carbon::now(),
               'updated_at'      => \Carbon\Carbon::now()

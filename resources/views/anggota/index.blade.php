@@ -43,6 +43,9 @@
                                     NIP
                                 </th>
                                 <th>
+                                    Jabatan
+                                </th>
+                                <th>
                                     Alamat
                                 </th>
                                 <th>
@@ -71,6 +74,9 @@
                                     <a href="{{route('anggota.show', $data->id)}}">
                                         {{$data->nip}}
                                     </a>
+                                </td>
+                                <td>
+                                    {{$data->jabatan}}
                                 </td>
 
                                 <td>

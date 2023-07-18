@@ -18,6 +18,7 @@ class AnggotaTableSeeder extends Seeder
               'id'  			=> 1,
               'user_id'  		=> 1,
               'nip'				=> 1941720130,
+              'jabatan'         => 'pegawai',
               'nama' 			=> 'Naila Nabila',
               'tempat_lahir'	=> 'Kota Malang',
               'tgl_lahir'		=> '2001-06-30',

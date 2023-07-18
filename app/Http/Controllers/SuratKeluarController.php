@@ -213,4 +213,16 @@ class SuratKeluarController extends Controller
          $surat_keluar = SuratKeluar::findOrFail($id);
          return view('surat_keluar.detail', compact('surat_keluar'));
      }
+
+     public function disposisi(Request $request)
+     {
+        $data = Disposisi::where('surat_id', $request->id)->first();
+     
+        Disposisi::where('id', $request->id)->update([
+        'surat_id' => $surat_keluar->id,
+        'tipe' => 'keluar',
+        'kabid_approval' => '1',
+        'kadin_approval' => '0',
+    ]);
+}
  }

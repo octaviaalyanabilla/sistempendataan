@@ -74,7 +74,8 @@ class AnggotaController extends Controller
 
         $this->validate($request, [
             'nama' => 'required|string|max:255',
-            'nip' => 'required|string|max:20|unique:anggota'
+            'nip' => 'required|string|max:20|unique:anggota',
+            'jabatan' => 'required|string|max:255'
         ]);
 
         Anggota::create($request->all());
