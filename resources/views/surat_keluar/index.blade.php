@@ -97,8 +97,9 @@
                                     <a style="color:green;"> Terdisposisi </a>
                                     @elseif($disposisi[$key] == 1)
                                     <a style="color:blue;"> Menunggu </a>
-                                    @endif($disposisi[$key] == 0)
+                                    @else
                                    <a style="color:red;"> Belum Terdisposisi</a>
+                                   @endif($disposisi[$key] == 0)
                                 </td>
                                 <td>
                                     @if(Auth::user()->level == 'admin')
@@ -118,6 +119,9 @@
                                                     onclick="return confirm('Anda yakin ingin menghapus data ini?')">
                                                     Delete
                                                 </button>
+                                                <a class="dropdown-item" href="{{route('surat_keluar.show', $surat_keluars->id)}}"> Detail </a>
+                                                <div class="btn-group dropdown">
+                                                    
                                             </form>
                                             @elseif(Auth::user()->level == 'kepala bidang um')
                                             <a class="btn btn-info" href="{{route('surat_keluar.detail', ['id'=>$surat_keluars->id])}}">Lihat </a>

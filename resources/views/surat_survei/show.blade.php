@@ -41,70 +41,98 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Detail Data - <b>{{$surat_surveis->judul}}</b> </h4>
-                        <form class="forms-sample">
+                    <h4 class="card-title">Detail Data- <b>{{$surat_survei->no_surat}}</b> </h4>
+                            <form class="forms-sample">
+                                <div class="form-group{{ $errors->has('no_surat') ? ' has-error' : '' }}">
+                                    <label for="no_surat" class="col-md-4 control-label">Nomor Surat</label>
+                                    <div class="col-md-6">
+                                        <input id="no_surat" type="text" class="form-control" name="no_surat" placeholder="Masukkan Nomor Surat"
+                                            value="{{ $surat_survei->no_surat }}" required>
+                                        @if ($errors->has('no_surat'))
+                                        <span class="help-block">
+                                            <strong>{{ $errors->first('no_surat') }}</strong>
+                                        </span>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="form-group{{ $errors->has('pengirim') ? ' has-error' : '' }}">
+                                <label for="pengirim" class="col-md-4 control-label">Pengirim</label>
+                                <div class="col-md-6">
+                                    <input id="pengirim" type="text" class="form-control" name="pengirim" placeholder="Pengirim" value="{{ $surat_survei->pengirim }}" required>
+                                    @if ($errors->has('pengirim'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('pengirim') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
+                            
+                            <div class="form-group{{ $errors->has('perihal') ? ' has-error' : '' }}">
+                                <label for="perihal" class="col-md-4 control-label">Perihal</label>
+                                <div class="col-md-6">
+                                    <input id="perihal" type="text" class="form-control" name="perihal" placeholder="Perihal" value="{{ $surat_survei->perihal }}" required>
+                                    @if ($errors->has('perihal'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('perihal') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="form-group{{ $errors->has('file_surat') ? ' has-error' : '' }}">
+                                <label for="file_surat" class="col-md-4 control-label">File Surat</label>
+                                <div class="col-md-6">
+                                <a href="{{url('document/surat/'.$surat_survei->file_surat)}}" target="_blank">Lihat</a>
+                                </div>
+                            </div>
+                            <div class="form-group{{ $errors->has('tgl_surat_asal') ? ' has-error' : '' }}">
+                                <label for="tgl_surat_asal" class="col-md-4 control-label">Tanggal Surat</label>
+                                <div class="col-md-6">
+                                    <input id="tgl_surat_asal" type="date" class="form-control" name="tgl_surat_asal" placeholder="Tanggal Surat"
+                                    value="{{ $surat_survei->tgl_surat_asal }}" required>
+                                    @if ($errors->has('tgl_surat_asal'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('tgl_surat_asal') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="form-group{{ $errors->has('tgl_surat') ? ' has-error' : '' }}">
+                                <label for="tgl_surat" class="col-md-4 control-label">Tanggal Surat Diterima</label>
+                                <div class="col-md-6">
+                                    <input id="tgl_surat" type="date" class="form-control" name="tgl_surat" placeholder="Tanggal Surat Diterima"
+                                    value="{{ $surat_survei->tgl_surat }}" required>
+                                    @if ($errors->has('tgl_surat'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('tgl_surat') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="form-group{{ $errors->has('jenis_surat') ? ' has-error' : '' }}">
+                                <label for="jenis_surat" class="col-md-4 control-label">Jenis Surat</label>
+                                <div class="col-md-6">
+                                    <input id="jenis_surat" type="text" class="form-control" name="jenis_surat" placeholder="Jenis Surat" value="{{ $surat_survei->jenis_surat }}" required>
+                                    @if ($errors->has('jenis_surat'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('jenis_surat') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
 
-                            <div class="form-group{{ $errors->has('nama_data') ? ' has-error' : '' }}">
-                                <label for="nama_data" class="col-md-4 control-label">Nama Data Utama</label>
-                                <div class="col-md-6">
-                                    <input id="judul" type="text" class="form-control" name="nama_data"
-                                        value="{{ $surat_surveis->data_utama->nama_data }}" readonly="">
-                                    @if ($errors->has('nama_data'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('nama_data') }}</strong>
-                                    </span>
-                                    @endif
-                                </div>
+                            <div class="col-md-12">
+                                <p>Daftar Komentar</p>
+                                @foreach($disposisi_comment as $disposisi_commentKey => $disposisi_comment_item)
+                                    <p>
+                                            Komen : {{$disposisi_comment_item->comment}}<br>
+                                            fase : {{$disposisi_comment_item->fase}}<br>
+                                            Tanggal dan Waktu : {{$disposisi_comment_item->created_at}}
+
+                                    </p>
+                                @endforeach
                             </div>
-                            <div class="form-group{{ $errors->has('nama_jenis_data') ? ' has-error' : '' }}">
-                                <label for="nama_jenis_data" class="col-md-4 control-label">Nama Jenis Data</label>
-                                <div class="col-md-6">
-                                    <input id="nama_jenis_data" type="text" class="form-control" name="nama_jenis_data"
-                                        value="{{ $isi_datas->jenis_data->nama_jenis_data }}" readonly="">
-                                    @if ($errors->has('nama_jenis_data'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('nama_jenis_data') }}</strong>
-                                    </span>
-                                    @endif
-                                </div>
-                            </div>
-                            <div class="form-group{{ $errors->has('nama_kategori_data') ? ' has-error' : '' }}">
-                                <label for="nama_kategori_data" class="col-md-4 control-label">Nama Kategori Data</label>
-                                <div class="col-md-6">
-                                    <input id="judul" type="text" class="form-control" name="nama_kategori_data"
-                                        value="{{ $surat_surveis->jenis_data->nama_kategori_data }}" readonly="">
-                                    @if ($errors->has('nama_kategori_data'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('nama_kategori_data') }}</strong>
-                                    </span>
-                                    @endif
-                                </div>
-                            </div>
-                            <div class="form-group{{ $errors->has('jumlah_data') ? ' has-error' : '' }}">
-                                <label for="jumlah_data" class="col-md-4 control-label">Jumlah Data</label>
-                                <div class="col-md-6">
-                                    <input id="judul" type="text" class="form-control" name="jumlah_data"
-                                        value="{{ $surat_surveis->jumlah_data }}" readonly="">
-                                    @if ($errors->has('jumlah_data'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('jumlah_data') }}</strong>
-                                    </span>
-                                    @endif
-                                </div>
-                            </div>
-                            <div class="form-group{{ $errors->has('tahun_data') ? ' has-error' : '' }}">
-                                <label for="tahun_data" class="col-md-4 control-label">Tahun Data</label>
-                                <div class="col-md-6">
-                                    <input id="judul" type="text" class="form-control" name="tahun_data"
-                                        value="{{ $surat_surveis->tahun_data }}" readonly="">
-                                    @if ($errors->has('tahun_data'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('tahun_data') }}</strong>
-                                    </span>
-                                    @endif
-                                </div>
-                            </div>
-                        <a href="{{route('surat_surveis.index')}}" class="btn btn-light pull-right">Back</a>
+
+                        <a href="{{route('surat_survei.index')}}" class="btn btn-light pull-right">Back</a>
                     </div>
                 </div>
             </div>

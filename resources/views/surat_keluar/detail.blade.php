@@ -35,9 +35,8 @@
 
 @section('content')
 
-<form action="{{ route('surat_keluar.detail', $surat_keluar->id) }}" method="post" enctype="multipart/form-data">
+<form action="{{ route('surat_keluar.disposisi') }}" method="post" enctype="multipart/form-data">
     {{ csrf_field() }}
-    {{ method_field('put') }}
     <div class="row">
         <div class="col-md-12 d-flex align-items-stretch grid-margin">
             <div class="row flex-grow">
@@ -51,7 +50,7 @@
                                     <div class="col-md-6">
                                         <input id="no_suratsk" type="text" class="form-control" name="no_suratsk" placeholder="Masukkan Nomor Surat"
                                             value="{{ $surat_keluar->no_suratsk }}" required>
-                                        @if ($errors->has('no_suratsk'))
+                                              @if ($errors->has('no_suratsk'))
                                         <span class="help-block">
                                             <strong>{{ $errors->first('no_suratsk') }}</strong>
                                         </span>
@@ -128,12 +127,31 @@
                                 <select class="form-control" name="fase" required="">
                                         <option value="">-- Ditujukan Ke --</option>
                                         <option value="admin">Admin (Tim Pendataan)</option>
+                                        @if(Auth::user()->level == '')
                                         <option value="kabid">Kepala Bidang UM</option>
+                                        @endif
+                                        @if(Auth::user()->level == 'kepala bidang um')
                                         <option value="kadin">Kepala Dinas</option>
+                                        @endif
                                     </select>
                                 </div>
                             </div>
-                            <button type="Disposisi" class="btn btn-primary" id="disposisi" type="submit">
+
+                            <div class="col-md-12">
+                                <p>Daftar Komentar</p>
+                                @foreach($disposisi_comment as $disposisi_commentKey => $disposisi_comment_item)
+                                    <p>
+                                            Komen : {{$disposisi_comment_item->comment}}<br>
+                                            fase : {{$disposisi_comment_item->fase}}<br>
+                                            Tanggal dan Waktu : {{$disposisi_comment_item->created_at}}
+
+                                    </p>
+                                @endforeach
+                            </div>
+
+                            <input type='hidden' name='id' value='{{$surat_keluar->id}}'>
+                            <input type='hidden' name='tipe' value='keluar'>
+                            <button type="Disposisi" class="btn btn-primary" id="disposisi">
                                 Disposisi
                             </button>
                             

@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\DataUM;
 use App\Models\SuratKeluar;
 use App\Models\Disposisi;
+use App\Models\DisposisiComment;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Session;
@@ -38,7 +39,7 @@ class SuratKeluarController extends Controller
          $surat_keluar = SuratKeluar::get();
          $disposisi = [];
          foreach ($surat_keluar as $key => $value) {
-            $data = Disposisi::where('surat_id', $value->id)->first();
+            $data = Disposisi::where('surat_id', $value->id)->where('tipe', 'keluar')->first();
             if(Auth::user()->level == 'admin'){
                 $disposisi[$key] = $data->admin_approval;
             }
@@ -147,8 +148,9 @@ class SuratKeluarController extends Controller
      }
  
          $surat_keluar = SuratKeluar::findOrFail($id);
- 
-         return view('surat_keluar.show', compact('surat_keluar'));
+         $disposisi = Disposisi::where('surat_id', $surat_keluar->id)->first();
+         $disposisi_comment = DisposisiComment::where('disposisi_id', $disposisi->id)->get();
+         return view('surat_keluar.show', compact('surat_keluar', 'disposisi', 'disposisi_comment'));
      }
  
      /**
@@ -211,18 +213,39 @@ class SuratKeluarController extends Controller
      }
  
          $surat_keluar = SuratKeluar::findOrFail($id);
-         return view('surat_keluar.detail', compact('surat_keluar'));
+         $disposisi = Disposisi::where('surat_id', $surat_keluar->id)->first();
+         $disposisi_comment = DisposisiComment::where('disposisi_id', $disposisi->id)->get();
+         return view('surat_keluar.detail', compact('surat_keluar', 'disposisi', 'disposisi_comment'));
      }
 
      public function disposisi(Request $request)
      {
-        $data = Disposisi::where('surat_id', $request->id)->first();
-     
-        Disposisi::where('id', $request->id)->update([
-        'surat_id' => $surat_keluar->id,
-        'tipe' => 'keluar',
-        'kabid_approval' => '1',
-        'kadin_approval' => '0',
-    ]);
+        // dd($request->all());
+         $data = Disposisi::where('surat_id', $request->id)->first();
+        if($request->fase == 'kadin')
+        {
+            Disposisi::where('tipe',$request->tipe)->where('surat_id', $request->id)->update([
+                'admin_approval' => '1',
+                'kabid_approval' => '2',
+                'kadin_approval' => '1',
+            ]);
+        }
+
+        if($request->fase == 'admin')
+        {
+            Disposisi::where('tipe',$request->tipe)->where('surat_id', $request->id)->update([
+                'admin_approval' => '1',
+                'kabid_approval' => '2',
+                'kadin_approval' => '2',
+            ]);
+        }
+    //     Disposisi::where('id', $request->id)->update([
+    //     'surat_id' => $surat_keluar->id,
+    //     'tipe' => 'keluar',
+    //     'kabid_approval' => '1',
+    // ]);
+
+    alert()->success('Berhasil.','Data berhasil terdisposisi!');
+    return redirect()->route('surat_keluar.index');
 }
  }

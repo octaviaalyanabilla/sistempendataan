@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\DataUM;
 use App\Models\SuratSurvei;
 use App\Models\Disposisi;
+use App\Models\DisposisiComment;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Session;
@@ -38,7 +39,7 @@ class SuratSurveiController extends Controller
          $surat_survei = SuratSurvei::get();
          $disposisi = [];
          foreach ($surat_survei as $key => $value) {
-            $data = Disposisi::where('surat_id', $value->id)->first();
+            $data = Disposisi::where('surat_id', $value->id)->where('tipe', 'survei')->first();
             if(Auth::user()->level == 'admin'){
                 $disposisi[$key] = $data->admin_approval;
             }
@@ -147,8 +148,9 @@ class SuratSurveiController extends Controller
      }
  
          $surat_survei = SuratSurvei::findOrFail($id);
- 
-         return view('surat_survei.show', compact('surat_survei'));
+         $disposisi = Disposisi::where('surat_id', $surat_survei->id)->first();
+         $disposisi_comment = DisposisiComment::where('disposisi_id', $disposisi->id)->get();
+         return view('surat_survei.show', compact('surat_survei', 'disposisi', 'disposisi_comment'));
      }
  
      /**
@@ -165,7 +167,9 @@ class SuratSurveiController extends Controller
      }
  
          $surat_survei = SuratSurvei::findOrFail($id);
-         return view('surat_survei.edit', compact('surat_survei'));
+         $disposisi = Disposisi::where('surat_id', $surat_survei->id)->first();
+         $disposisi_comment = DisposisiComment::where('disposisi_id', $disposisi->id)->get();
+         return view('surat_survei.edit', compact('surat_survei', 'disposisi', 'disposisi_comment'));
      }
  
      /**
@@ -177,6 +181,7 @@ class SuratSurveiController extends Controller
       */
      public function update(Request $request, $id)
      {
+        //dd('j');
          SuratSurvei::find($id)->update([
             'no_surat' => $request->get('no_surat'),
             'pengirim' => $request->get('pengirim'),
@@ -209,9 +214,48 @@ class SuratSurveiController extends Controller
          if((Auth::user()->level == 'user') && (Auth::user()->id != $id)) {
              Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
              return redirect()->to('/');
-     }
+        }
  
          $surat_survei = SuratSurvei::findOrFail($id);
-         return view('surat_survei.detail', compact('surat_survei'));
+         $disposisi = Disposisi::where('surat_id', $surat_survei->id)->first();
+         $disposisi_comment = DisposisiComment::where('disposisi_id', $disposisi->id)->get();
+         return view('surat_survei.detail', compact('surat_survei','disposisi', 'disposisi_comment'));
      }
- }
+     public function disposisi(Request $request)
+     {
+         //dd($request->all());
+         $data = Disposisi::where('surat_id', $request->id)->first();
+     
+        if($request->fase == 'kadin')
+        {
+            Disposisi::where('tipe',$request->tipe)->where('surat_id', $request->id)->update([
+                'admin_approval' => '1',
+                'kabid_approval' => '2',
+                'kadin_approval' => '1',
+            ]);
+        }
+
+        if($request->fase == 'admin')
+        {
+            Disposisi::where('tipe',$request->tipe)->where('surat_id', $request->id)->update([
+                'admin_approval' => '1',
+                'kabid_approval' => '2',
+                'kadin_approval' => '2',
+            ]);
+        }
+        DisposisiComment::create([
+            'disposisi_id' => $data->id,
+            'comment' => $request->get('disposisi_comment'),
+            'fase' =>$request->get('fase')
+        ]);
+        // Disposisi::where('id', $request->id)->update([
+        //     'surat_id' => $surat_survei->id,
+        //     'tipe' => 'keluar',
+        //     'kabid_approval' => '1',
+        // ]);
+
+        alert()->success('Berhasil.','Data berhasil terdisposisi!');
+        return redirect()->route('surat_survei.index');
+    }
+    
+}
