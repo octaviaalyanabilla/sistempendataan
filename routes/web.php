@@ -45,6 +45,9 @@ Route::resource('/surat_keluar', SuratKeluarController::class);
 
 Route::get('/laporan/data', [LaporanController::class, 'data']);
 Route::get('/laporan/data/pdf', [LaporanController::class, 'dataPdf']);
+Route::get('/laporan/dataum', [LaporanController::class, 'dataPdfUM']);
+Route::get('/laporan/datasurvei', [LaporanController::class, 'dataPdfSurvei']);
+Route::get('/laporan/datakeluar', [LaporanController::class, 'dataPdfKeluar']);
 
 Route::get('/rekap/data', [RekapController::class, 'data']);
 

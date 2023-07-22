@@ -16,7 +16,7 @@
 
     <div class="col-lg-2">
         <a href="{{ route('surat_survei.create') }}" class="btn btn-primary btn-rounded btn-fw"><i class="fa fa-plus"></i>
-          Add Surat Survei</a>
+          Add Surat Masuk</a>
     </div>
     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         {{-- <form action="{{ url('import_data') }}" method="post" class="form-inline" enctype="multipart/form-data">
@@ -43,7 +43,7 @@
         <div class="card">
 
             <div class="card-body">
-                <h4 class="card-title pull-left">Surat Survei</h4>
+                <h4 class="card-title pull-left">Surat Masuk</h4>
                 {{-- <a href="{{url('format_data')}}" class="btn btn-xs btn-info pull-right">Format data</a> --}}
                 <div class="table-responsive">
                     <table class="table table-striped" id="table">
@@ -139,6 +139,7 @@
                 </div>
                 {{--  {!! $surat_surveis->links() !!} --}}
             </div>
+            
         </div>
     </div>
 </div>

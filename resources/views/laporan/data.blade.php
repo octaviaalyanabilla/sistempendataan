@@ -12,22 +12,62 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="row">
-
-</div>
-<div class="row" style="margin-top: 20px;">
-    <div class="col-lg-12 grid-margin stretch-card">
-        <div class="card">
-
-            <div class="card-body">
-                <h4 class="card-title">Cetak Data</h4>
-
-                <div class="col-md-2 pull-left">
-                    <a href="{{ url('laporan/data/pdf') }}" class="btn btn-primary btn-rounded btn-fw"><b><i
-                                class="fa fa-download"></i> Export PDF</a></b>
-                </div>
-            </div>
-        </div>
+<form action="{{url('laporan/dataum')}}" class="col-lg-12">
+<div class="col-md-12 row">
+    <div class="col-md-5">
+        <input id="tgl_sk" type="datetime-local" class="form-control" name="start_date_data_um" placeholder="Tanggal"
+        value="{{ $request->start_date_data_um }}" required>
+    </div>
+    <div class="col-md-5">
+        <input id="tgl_sk" type="datetime-local" class="form-control" name="end_date_data_um" placeholder="Tanggal"
+        value="{{ $request->end_date_data_um }}" required>
+    </div>
+    <div class="col-md-2">
+        <button type="submit" class="btn btn-primary" id="cetak">Cetak</button>
+    </div>
     </div>
 </div>
+</form>
+
+
+
+
+<form action="{{url('laporan/datasurvei')}}" class="col-lg-12">
+<div class="col-md-12 row">
+    <div class="col-md-5">
+        <input id="tgl_sk" type="date" class="form-control" name="start_date_surat_survei" placeholder="Tanggal"
+        value="{{ $request->start_date_surat_survei }}" required>
+    </div>
+    <div class="col-md-5">
+        <input id="tgl_sk" type="date" class="form-control" name="end_date_surat_survei" placeholder="Tanggal"
+        value="{{ $request->end_date_surat_survei }}" required>
+    </div>
+    <div class="col-md-2">
+        <button type="submit" class="btn btn-primary" id="cetak">Cetak</button>
+    </div>
+    </div>
+</form>
+
+
+<form action="{{url('laporan/datakeluar')}}" class="col-lg-12">
+<div class="col-md-12 row">
+    <div class="col-md-5">
+        <input id="tgl_sk" type="date" class="form-control" name="start_date_surat_keluar" placeholder="Tanggal"
+        value="{{ $request->start_date_surat_keluar }}" required>
+    </div>
+    <div class="col-md-5">
+        <input id="tgl_sk" type="date" class="form-control" name="end_date_surat_keluar" placeholder="Tanggal"
+        value="{{ $request->end_date_surat_keluar }}" required>
+    </div>
+    <div class="col-md-2">
+        <button type="submit" class="btn btn-primary" id="cetak">Cetak</button>
+    </div>
+    </div>
+</form>
+
+
+
+    
 @endsection

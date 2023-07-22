@@ -14,6 +14,7 @@
 @section('content')
 <div class="row">
 
+
     <div class="col-lg-2">
         <a href="{{ route('data_um.create') }}" class="btn btn-primary btn-rounded btn-fw"><i class="fa fa-plus"></i>
           Add Data UM</a>

@@ -122,6 +122,7 @@
                                                 <a class="dropdown-item" href="{{route('surat_keluar.show', $surat_keluars->id)}}"> Detail </a>
                                                 <div class="btn-group dropdown">
                                                     
+                                                    
                                             </form>
                                             @elseif(Auth::user()->level == 'kepala bidang um')
                                             <a class="btn btn-info" href="{{route('surat_keluar.detail', ['id'=>$surat_keluars->id])}}">Lihat </a>
