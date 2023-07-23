@@ -5,6 +5,7 @@
             "iDisplayLength": 50
         });
 
+
     });
 
 </script>
@@ -13,11 +14,12 @@
 
 @section('content')
 <div class="row">
-
+@if(Auth::user()->level == 'admin')
     <div class="col-lg-2">
         <a href="{{ route('surat_keluar.create') }}" class="btn btn-primary btn-rounded btn-fw"><i class="fa fa-plus"></i>
           Add Surat Keluar</a>
     </div>
+    @endif
     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         {{-- <form action="{{ url('import_data') }}" method="post" class="form-inline" enctype="multipart/form-data">
         {{ csrf_field() }}

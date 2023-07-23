@@ -4,7 +4,14 @@
         $('#table').DataTable({
             "iDisplayLength": 50
         });
+        
+        $('#table1').DataTable({
+            "iDisplayLength": 50
+        });
 
+        $('#table2').DataTable({
+            "iDisplayLength": 50
+        });
     });
 
 </script>
@@ -177,7 +184,7 @@
                 <h4 class="card-title pull-left">Surat Masuk</h4>
                 {{-- <a href="{{url('format_data')}}" class="btn btn-xs btn-info pull-right">Format data</a> --}}
                 <div class="table-responsive">
-                    <table class="table table-striped" id="table">
+                    <table class="table table-striped" id="table1">
                         <thead>
                             <tr>
                                 <th>
@@ -311,7 +318,7 @@
                 <h4 class="card-title pull-left">Surat Masuk</h4>
                 {{-- <a href="{{url('format_data')}}" class="btn btn-xs btn-info pull-right">Format data</a> --}}
                 <div class="table-responsive">
-                    <table class="table table-striped" id="table">
+                    <table class="table table-striped" id="table2">
                         <thead>
                             <tr>
                                 <th>
