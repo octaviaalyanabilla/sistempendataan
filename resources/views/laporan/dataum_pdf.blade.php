@@ -81,12 +81,6 @@
                     Nama Pelaku Usaha
                 </th>
                 <th>
-                    NIK
-                </th>
-                <th>
-                    Nomor KK
-                </th>
-                <th>
                     Alamat
                 </th>
                 <th>
@@ -94,9 +88,6 @@
                 </th>
                 <th>
                     Jenis Usaha
-                </th>
-                <th>
-                    Telepon
                 </th>
                 <th>
                     SKU/NIB
@@ -122,15 +113,6 @@
                     {{$data_ums->nama_data}}
                 </td>
                 <td>
-
-                    {{$data_ums->nik}}
-
-                </td>
-
-                <td>
-                    {{$data_ums->nomor_kk}}
-                </td>
-                <td>
                     {{$data_ums->alamat}}
                 </td>
                 <td>
@@ -138,9 +120,6 @@
                 </td>
                 <td>
                     {{$data_ums->jenis_usaha}}
-                </td>
-                <td>
-                    {{$data_ums->telepon}}
                 </td>
                 <td>
                     {{$data_ums->sku}}
