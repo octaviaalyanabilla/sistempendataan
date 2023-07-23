@@ -40,13 +40,13 @@
         @endif
     </div>
 </div>
+
 <div class="row" style="margin-top: 20px;">
     <div class="col-lg-12 grid-margin stretch-card">
         <div class="card">
 
             <div class="card-body">
                 <h4 class="card-title pull-left">Data UM</h4>
-                {{-- <a href="{{url('format_data')}}" class="btn btn-xs btn-info pull-right">Format data</a> --}}
                 <div class="table-responsive">
                     <table class="table table-striped" id="table">
                         <thead>
