@@ -34,10 +34,20 @@
                                     @endif
                                 </div>
                             </div>
+                            <div class="form-group{{ $errors->has('statpegawai') ? ' has-error' : '' }}">
+                                <label for="statpegawai" class="col-md-4 control-label">Status Pegawai</label>
+                                <div class="col-md-6">
+                                    <select class="form-control" name="statpegawai" required onchange=checkJabatan(this.value);>
+                                        <option value="">-- Status Pegawai --</option>
+                                        <option value="ASN">ASN</option>
+                                        <option value="NonASN">Non ASN</option>
+                                    </select>
+                                </div>
+                            </div>
                             <div class="form-group{{ $errors->has('nip') ? ' has-error' : '' }}">
                                 <label for="nip" class="col-md-4 control-label">NIP</label>
                                 <div class="col-md-6">
-                                    <input id="nip" type="text" class="form-control" name="nip" placeholder="Masukkan NIP" required>
+                                    <input id="nip" type="text" class="form-control" name="nip" placeholder="Masukkan NIP">
                                     @if ($errors->has('nip'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('nip') }}</strong>
@@ -86,7 +96,7 @@
                                 <label for="level" class="col-md-4 control-label">Jenis Kelamin</label>
                                 <div class="col-md-6">
                                     <select class="form-control" name="jk" required="">
-                                        <option value="">-- Pilih Jenis Kelamin</option>
+                                        <option value="">-- Pilih Jenis Kelamin --</option>
                                         <option value="L">Laki - Laki</option>
                                         <option value="P">Perempuan</option>
                                     </select>
@@ -133,4 +143,17 @@
 
     </div>
 </form>
+<script>
+    function checkJabatan(value)
+    {
+        console.log(value);
+        if(value != 'ASN')
+        {
+            document.getElementById('nip').setAttribute('readonly','readonly');
+        }else
+        {
+            document.getElementById('nip').removeAttribute('readonly');
+        }
+    }
+</script>
 @endsection

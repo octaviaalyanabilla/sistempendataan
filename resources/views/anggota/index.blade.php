@@ -43,6 +43,9 @@
                                     NIP
                                 </th>
                                 <th>
+                                    Status Pegawai
+                                </th>
+                                <th>
                                     Jabatan
                                 </th>
                                 <th>
@@ -78,7 +81,9 @@
                                 <td>
                                     {{$data->jabatan}}
                                 </td>
-
+                                <td>
+                                    {{$data->statpegawai == "ASN" ? "ASN" : "NonASN"}}
+                                </td>
                                 <td>
                                     {{$data->alamat}}
                                 </td>
