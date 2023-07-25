@@ -100,15 +100,17 @@
                                         <div class="dropdown-menu" x-placement="bottom-start"
                                             style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 30px, 0px);">
                                             <a class="dropdown-item" href="{{route('user.edit', $data->id)}}"> Edit </a>
-                                            <form action="{{ route('user.destroy', $data->id) }}" class="pull-left"
-                                                method="post">
-                                                {{ csrf_field() }}
-                                                {{ method_field('delete') }}
-                                                <button class="dropdown-item"
-                                                    onclick="return confirm('Anda yakin ingin menghapus data ini?')">
-                                                    Delete
-                                                </button>
-                                            </form>
+                                            @if($data->level != 'admin')
+                                                <form action="{{ route('user.destroy', $data->id) }}" class="pull-left"
+                                                    method="post">
+                                                    {{ csrf_field() }}
+                                                    {{ method_field('delete') }}
+                                                    <button class="dropdown-item"
+                                                        onclick="return confirm('Anda yakin ingin menghapus data ini?')">
+                                                        Delete
+                                                    </button>
+                                                </form>
+                                            @endif
 
                                         </div>
                                     </div>
