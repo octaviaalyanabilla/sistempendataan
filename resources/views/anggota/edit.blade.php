@@ -47,6 +47,16 @@
                                     @endif
                                 </div>
                             </div>
+                            <div class="form-group{{ $errors->has('statpegawai') ? ' has-error' : '' }}">
+                                <label for="statpegawai" class="col-md-4 control-label">Status Pegawai</label>
+                                <div class="col-md-6">
+                                    <select class="form-control" name="statpegawai" required="">
+                                        <option value="">-- Status Pegawai --</option>
+                                        <option value="ASN">ASN</option>
+                                        <option value="NonASN">Non ASN</option>
+                                    </select>
+                                </div>
+                            </div>
                             <div class="form-group{{ $errors->has('tempat_lahir') ? ' has-error' : '' }}">
                                 <label for="tempat_lahir" class="col-md-4 control-label">Tempat Lahir</label>
                                 <div class="col-md-6">

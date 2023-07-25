@@ -21,7 +21,7 @@
     </div>
     @endif
     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-        {{-- <form action="{{ url('import_data') }}" method="post" class="form-inline" enctype="multipart/form-data">
+        <form action="{{ url('import_data') }}" method="post" class="form-inline" enctype="multipart/form-data">
         {{ csrf_field() }}
         <div class="input-group {{ $errors->has('importdata') ? 'has-error' : '' }}">
             <input type="file" class="form-control" name="importdata" required="">
@@ -30,7 +30,7 @@
                 <button type="submit" class="btn btn-success" style="height: 38px;margin-left: -2px;">Import</button>
             </span>
         </div>
-        </form> --}}
+        </form>
 
     </div>
     <div class="col-lg-12">

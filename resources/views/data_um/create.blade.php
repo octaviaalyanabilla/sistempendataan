@@ -76,7 +76,7 @@ $(function() {
                                         <strong>{{ $errors->first('nomor_kk') }}</strong>
                                     </span>
                                     @endif
-                                <img class="product" width="200" height="200">
+                                <img class="product mt-4" width="200" height="200">
                                     <input type="file" class="uploads form-control" style="margin-top: 20px;" name="nomor_kk" placeholder="Nomor KK">
                                     </div>
                             </div>
