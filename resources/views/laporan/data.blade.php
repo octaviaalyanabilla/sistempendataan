@@ -41,7 +41,7 @@
     <div class="col-lg-12 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Data Surat Survey</h4>
+                <h4 class="card-title">Data Surat Masuk</h4>
                 <form action="{{url('laporan/datasurvei')}}" >
                     <div class="row">
                         <div class="col-md-5">

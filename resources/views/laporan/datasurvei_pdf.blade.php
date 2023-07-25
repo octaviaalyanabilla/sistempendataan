@@ -69,11 +69,11 @@
 
     </style>
     <link rel="stylesheet" href="">
-    <title>Cetak Data</title>
+    <title>Data Surat Masuk</title>
 </head>
 
 <body>
-    <h1 class="center">CETAK DATA</h1>
+    <h1 class="center">DATA SURAT MASUK</h1>
     <table id="pseudo-demo">
         <thead>
             <tr>
@@ -91,9 +91,6 @@
                                 </th>
                                 <th>
                                     Tanggal Surat
-                                </th>
-                                <th>
-                                    Status
                                 </th>
                                 </tr>
                         </thead>
@@ -116,16 +113,6 @@
                                 </td>
                                 <td>
                                     {{$surat_surveis->tgl_surat}}
-                                </td>
-                                <td>
-                                    @if($disposisi[$key] == 2) 
-                                    <a style="color:green;"> Terdisposisi </a>
-                                    @elseif($disposisi[$key] == 1)
-                                    <a style="color:blue;"> Menunggu </a>
-                                    @else
-                                    <a style="color:red;"> Belum Terdisposisi</a>
-                                    @endif
-                                   
                                 </td>
             @endforeach
         </tbody>

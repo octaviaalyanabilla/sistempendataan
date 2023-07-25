@@ -69,11 +69,11 @@
 
     </style>
     <link rel="stylesheet" href="">
-    <title>Cetak Data</title>
+    <title>Data Usaha Mikro</title>
 </head>
 
 <body>
-    <h1 class="center">CETAK DATA</h1>
+    <h1 class="center">DATA USAHA MIKRO</h1>
     <table id="pseudo-demo">
         <thead>
             <tr>
